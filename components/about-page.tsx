@@ -50,7 +50,7 @@ export function AboutPage() {
         >
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">About Monetta India</p>
-            <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">A premium business solutions company built for modern finance and operations teams.</h1>
+            <h1 className="mt-3 max-w-2xl font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">Tally certified business solutions company built for modern finance and operations teams.</h1>
             <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">Monetta India brings together implementation expertise, cloud-ready systems, ongoing support and a consultative approach for companies that want dependable accounting and business workflows.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="/contact"><Button className="h-10 bg-accent text-accent-foreground">Request Consultation</Button></a>
