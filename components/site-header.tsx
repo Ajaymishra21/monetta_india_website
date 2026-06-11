@@ -76,7 +76,7 @@ export function SiteHeader() {
             </a>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex">
             {navLinks.map((link) => {
               const hasMenu = link.label in megaMenus
               return (
@@ -100,7 +100,7 @@ export function SiteHeader() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex shrink-0 items-center gap-1.5">
             <button
               onClick={() => setSearchOpen(true)}
               className="flex size-9 items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
