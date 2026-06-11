@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 import { SectionHeading, Reveal } from '@/components/section-heading'
 import { industries } from '@/lib/site-data'
 
@@ -18,8 +17,7 @@ export function Industries() {
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((ind, i) => (
             <Reveal key={ind.name} delay={(i % 3) * 0.06}>
-              <motion.a
-                href={`/industries/${ind.name.toLowerCase().replace(/ /g, '-')}`}
+              <motion.article
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-xl hover:shadow-primary/5"
@@ -34,11 +32,7 @@ export function Industries() {
                 <p className="relative mt-1 text-sm text-muted-foreground">
                   {ind.description}
                 </p>
-                <span className="relative mt-4 inline-flex items-center gap-1 text-sm font-semibold text-secondary dark:text-accent">
-                  Explore solutions
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </motion.a>
+              </motion.article>
             </Reveal>
           ))}
         </div>

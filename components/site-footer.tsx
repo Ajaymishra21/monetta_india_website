@@ -27,6 +27,7 @@ export function SiteFooter() {
             <h5 className="font-semibold">Quick Links</h5>
             <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
               <li><a href="/industries">Industries</a></li>
+              <li><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
               <li><a href="/#services">Services</a></li>
             </ul>

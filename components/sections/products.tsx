@@ -23,7 +23,7 @@ const renewalPlans = [
     basePrice: 4500,
     gstRate: 18,
     total: 5310,
-    badges: ['Genuine Tally Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Expert Support'],
+    badges: ['Genuine Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Support'],
   },
   {
     name: 'TallyPrime Gold Renewal',
@@ -31,7 +31,7 @@ const renewalPlans = [
     basePrice: 13500,
     gstRate: 18,
     total: 15930,
-    badges: ['Genuine Tally Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Expert Support'],
+    badges: ['Genuine Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Support'],
   },
   {
     name: 'TallyPrime Silver Renewal',
@@ -39,7 +39,7 @@ const renewalPlans = [
     basePrice: 8100,
     gstRate: 18,
     total: 9558,
-    badges: ['Genuine Tally Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Expert Support'],
+    badges: ['Genuine Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Support'],
   },
   {
     name: 'TallyPrime Gold Renewal',
@@ -47,7 +47,7 @@ const renewalPlans = [
     basePrice: 24300,
     gstRate: 18,
     total: 28614,
-    badges: ['Genuine Tally Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Expert Support'],
+    badges: ['Genuine Renewal', 'Instant Activation', 'GST Invoice', 'Monetta Support'],
   },
 ]
 
@@ -181,7 +181,7 @@ export function Products() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 xl:grid-cols-4">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {renewalPlans.map((plan, index) => (
               <motion.article
                 key={`${plan.name}-${plan.validity}`}
@@ -190,30 +190,42 @@ export function Products() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.35, delay: index * 0.05 }}
                 whileHover={{ y: -6 }}
-                className="group rounded-3xl border border-border bg-background/90 p-5 transition-all hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10"
+                className="group flex h-full flex-col rounded-[28px] border border-border bg-background/95 p-5 shadow-lg shadow-primary/5 transition-all hover:border-accent/60 hover:bg-background hover:shadow-2xl hover:shadow-accent/10"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="rounded-full bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">TSS Renewal</span>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <span className="inline-flex rounded-full bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">Genuine Renewal</span>
+                    <p className="mt-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">TallyPrime Renewal</p>
+                  </div>
                   <ShieldCheck className="size-5 text-success" />
                 </div>
-                <h4 className="mt-4 text-xl font-bold text-foreground">{plan.name}</h4>
-                <p className="mt-1 text-sm text-muted-foreground">Validity: {plan.validity}</p>
-                <div className="mt-5 rounded-2xl border border-border bg-card/80 p-4">
-                  <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Base Price</p>
-                  <p className="mt-1 font-heading text-2xl font-extrabold text-foreground">₹{plan.basePrice.toLocaleString('en-IN')}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">GST @ {plan.gstRate}%</p>
-                  <p className="mt-2 text-sm text-muted-foreground">Total Payable Amount</p>
-                  <p className="font-heading text-2xl font-extrabold text-accent">₹{plan.total.toLocaleString('en-IN')}</p>
+
+                <div className="mt-5 flex flex-1 flex-col rounded-3xl border border-border bg-gradient-to-b from-card to-background p-4">
+                  <h4 className="text-xl font-bold text-foreground">{plan.name}</h4>
+                  <p className="mt-1 text-sm text-muted-foreground">Validity: {plan.validity}</p>
+
+                  <div className="mt-5 rounded-2xl border border-border bg-background/90 p-4 shadow-sm">
+                    <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">Base Price</p>
+                    <p className="mt-1 font-heading text-2xl font-extrabold text-foreground">₹{plan.basePrice.toLocaleString('en-IN')}</p>
+                    <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">GST (18%)</p>
+                    <p className="mt-1 font-heading text-xl font-bold text-foreground">₹{Math.round(plan.basePrice * 0.18).toLocaleString('en-IN')}</p>
+                    <div className="mt-4 rounded-2xl bg-accent/8 p-3">
+                      <p className="text-[11px] uppercase tracking-[0.25em] text-accent">Final Price</p>
+                      <p className="mt-1 font-heading text-3xl font-black text-accent">₹{plan.total.toLocaleString('en-IN')}</p>
+                      <p className="text-xs text-muted-foreground">Inclusive of GST</p>
+                    </div>
+                  </div>
+
+                  <ul className="mt-4 space-y-2 text-sm text-foreground/85">
+                    {plan.badges.map((badge) => (
+                      <li key={badge} className="flex items-center gap-2"><BadgeCheck className="size-4 text-success" /> {badge}</li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-4 space-y-2 text-sm text-foreground/85">
-                  {plan.badges.map((badge) => (
-                    <li key={badge} className="flex items-center gap-2"><BadgeCheck className="size-4 text-success" /> {badge}</li>
-                  ))}
-                </ul>
+
                 <div className="mt-5 grid gap-2">
                   <a href="/contact" className="w-full"><Button className="h-10 w-full bg-accent text-accent-foreground">Renew Now</Button></a>
                   <a href="https://wa.me/919582178907" target="_blank" rel="noreferrer" className="w-full"><Button variant="outline" className="h-10 w-full"><MessageCircle className="mr-2 size-4" />WhatsApp Expert</Button></a>
-                  <a href="/contact" className="w-full"><Button variant="ghost" className="h-10 w-full">Request Callback</Button></a>
                 </div>
               </motion.article>
             ))}

@@ -99,18 +99,6 @@ export const products: Product[] = [
       'Attendance integration',
     ],
   },
-  {
-    name: 'TDS Solutions',
-    tagline: 'Tax deduction made easy',
-    price: '₹7,499',
-    icon: ReceiptText,
-    features: [
-      'Auto TDS computation',
-      'Challan & return filing',
-      'Form 16 / 16A generation',
-      'Reconciliation reports',
-    ],
-  },
 ]
 
 export type Service = {
@@ -236,7 +224,7 @@ export const navLinks = [
   { label: 'Home', href: '/#home' },
   { label: 'Products', href: '/#products' },
   { label: 'Services', href: '/#services' },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -316,11 +304,32 @@ export type TeamMember = {
   name: string
   role: string
   initials: string
+  description: string
 }
 
 export const team: TeamMember[] = [
-  { name: 'Rajesh Mehta', role: 'Founder & CEO', initials: 'RM' },
-  { name: 'Anita Sharma', role: 'Head of Implementation', initials: 'AS' },
-  { name: 'Vikram Patel', role: 'Lead Tally Consultant', initials: 'VP' },
-  { name: 'Priya Nair', role: 'Customer Success Lead', initials: 'PN' },
+  {
+    name: 'Sandeep Patel',
+    role: 'Director',
+    initials: 'SP',
+    description: 'Leads Monetta India’s software, automation, cloud accounting and business solutions initiatives with a strategic, client-focused approach.',
+  },
+  {
+    name: 'Deepak Yadav',
+    role: 'Team Head',
+    initials: 'DY',
+    description: 'Oversees implementation delivery, coordination and operational excellence for client projects across the business solutions team.',
+  },
+  {
+    name: 'Himanshi Jha',
+    role: 'Support Executive',
+    initials: 'HJ',
+    description: 'Provides responsive support coordination, client assistance and practical guidance for ongoing business and software needs.',
+  },
+  {
+    name: 'Radhika',
+    role: 'Customer Support Executive',
+    initials: 'R',
+    description: 'Supports day-to-day customer service, consultation follow-up and a professional experience for every client engagement.',
+  },
 ]
