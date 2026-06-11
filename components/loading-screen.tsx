@@ -12,6 +12,24 @@ export function LoadingScreen() {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow
+    const originalOverflowY = document.documentElement.style.overflowY
+
+    if (loading) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflowY = 'auto'
+    } else {
+      document.body.style.overflow = originalOverflow
+      document.documentElement.style.overflowY = originalOverflowY
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      document.documentElement.style.overflowY = originalOverflowY
+    }
+  }, [loading])
+
   return (
     <AnimatePresence>
       {loading && (

@@ -53,6 +53,24 @@ export function SearchDialog({
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow
+    const originalOverflowY = document.documentElement.style.overflowY
+
+    if (open) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflowY = 'auto'
+    } else {
+      document.body.style.overflow = originalOverflow
+      document.documentElement.style.overflowY = originalOverflowY
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      document.documentElement.style.overflowY = originalOverflowY
+    }
+  }, [open])
+
   return (
     <AnimatePresence>
       {open && (
