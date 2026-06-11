@@ -1,6 +1,5 @@
 'use client'
 
-import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   ArrowRight,
@@ -63,23 +62,6 @@ const comparisonRows = [
 ]
 
 export function Products() {
-  const [licenseType, setLicenseType] = useState<'Silver' | 'Gold'>('Gold')
-  const [renewalPeriod, setRenewalPeriod] = useState<'1 Year' | '2 Years'>('1 Year')
-
-  const calculator = useMemo(() => {
-    const basePrice = licenseType === 'Silver'
-      ? renewalPeriod === '1 Year'
-        ? 4500
-        : 8100
-      : renewalPeriod === '1 Year'
-        ? 13500
-        : 24300
-
-    const gstAmount = Math.round(basePrice * 0.18)
-    const total = basePrice + gstAmount
-
-    return { basePrice, gstAmount, total }
-  }, [licenseType, renewalPeriod])
   return (
     <section id="products" className="relative scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -231,44 +213,7 @@ export function Products() {
             ))}
           </div>
 
-          <div className="mt-8 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              className="rounded-3xl border border-border bg-gradient-to-br from-accent/8 via-card to-card p-6 shadow-xl shadow-accent/10"
-            >
-              <div className="flex items-center gap-2 text-accent">
-                <Zap className="size-5" />
-                <p className="text-sm font-semibold uppercase tracking-[0.25em]">Interactive Calculator</p>
-              </div>
-              <h4 className="mt-3 font-heading text-2xl font-bold text-foreground">Renewal Price Calculator</h4>
-              <p className="mt-2 text-sm text-muted-foreground">Choose your license type and renewal period to preview the pricing instantly.</p>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <label className="rounded-2xl border border-border bg-background/90 p-4 text-sm text-foreground">
-                  <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-muted-foreground">License Type</span>
-                  <select value={licenseType} onChange={(e) => setLicenseType(e.target.value as 'Silver' | 'Gold')} className="w-full rounded-xl border border-border bg-transparent p-3 text-sm outline-none ring-0">
-                    <option value="Silver">Silver</option>
-                    <option value="Gold">Gold</option>
-                  </select>
-                </label>
-                <label className="rounded-2xl border border-border bg-background/90 p-4 text-sm text-foreground">
-                  <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-muted-foreground">Renewal Period</span>
-                  <select value={renewalPeriod} onChange={(e) => setRenewalPeriod(e.target.value as '1 Year' | '2 Years')} className="w-full rounded-xl border border-border bg-transparent p-3 text-sm outline-none ring-0">
-                    <option value="1 Year">1 Year</option>
-                    <option value="2 Years">2 Years</option>
-                  </select>
-                </label>
-              </div>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-border bg-background/90 p-4"><p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Base Price</p><p className="mt-2 font-heading text-xl font-extrabold text-foreground">₹{calculator.basePrice.toLocaleString('en-IN')}</p></div>
-                <div className="rounded-2xl border border-border bg-background/90 p-4"><p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">GST Amount</p><p className="mt-2 font-heading text-xl font-extrabold text-foreground">₹{calculator.gstAmount.toLocaleString('en-IN')}</p></div>
-                <div className="rounded-2xl border border-accent/25 bg-accent/8 p-4"><p className="text-xs uppercase tracking-[0.25em] text-accent">Total Payable</p><p className="mt-2 font-heading text-xl font-extrabold text-accent">₹{calculator.total.toLocaleString('en-IN')}</p></div>
-              </div>
-            </motion.div>
-
+          <div className="mt-8 grid gap-6 xl:grid-cols-[1fr]">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
