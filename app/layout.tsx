@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Manrope, Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import './globals.css'
+import { BackToTop } from '@/components/back-to-top'
 import { SiteFooter } from '@/components/site-footer'
 
 const manrope = Manrope({
@@ -114,6 +115,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <BackToTop />
         <SiteFooter />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

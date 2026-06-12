@@ -5,11 +5,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
 export function LoadingScreen() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1400)
-    return () => clearTimeout(timer)
+    const hasSeenIntro = sessionStorage.getItem('monetta-intro-seen') === 'true'
+
+    if (hasSeenIntro) {
+      setLoading(false)
+      return
+    }
+
+    const timer = window.setTimeout(() => {
+      setLoading(false)
+      sessionStorage.setItem('monetta-intro-seen', 'true')
+    }, 1400)
+
+    return () => window.clearTimeout(timer)
   }, [])
 
   useEffect(() => {
